@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('search-input');
 
     // --- STATE MANAGEMENT ---
-    let currentLang = localStorage.getItem('lang') || 'en';
+    let currentLang = localStorage.getItem('lang') || 'eng';
     let currentTheme = localStorage.getItem('theme') || 'system';
 
     // --- THEME SWITCHER LOGIC ---
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
         if (currentTheme === 'system') {
-            applyTheme('system');
+            apyTheme('system');
         }
     });
 
@@ -142,3 +142,4 @@ document.addEventListener('DOMContentLoaded', () => {
     loadLanguage(currentLang);
 
 });
+
