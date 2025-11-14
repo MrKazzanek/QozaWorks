@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QozaWorks</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="/assets/logos.png">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <header id="main-header">
+        <nav class="container">
+            <a href="#" class="logo-link"><img src="assets/logo.png" alt="QozaWorks Logo" class="logo"></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#projects" data-lang-key="navProjects">Projekty</a></li>
+                <li><a href="#about" data-lang-key="navAbout">O mnie</a></li>
+                <li><a href="#partnerships" data-lang-key="navPartnerships">Partnerstwa</a></li>
+                <li><a href="#reviews" data-lang-key="navReviews">Opinie</a></li>
+                <li><a href="#contact" data-lang-key="navContact">Kontakt</a></li>
+            </ul>
+            <div class="settings">
+                <button id="theme-toggle" aria-label="Zmień motyw"><i class="fas fa-sun"></i></button>
+                <div class="lang-switcher">
+                    <button id="lang-toggle" aria-label="Zmień język"><i class="fas fa-globe"></i></button>
+                    <div class="lang-options">
+                        <a href="#" data-lang="eng">English</a>
+                        <a href="#" data-lang="pl">Polski</a>
+                    </div>
+                </div>
+            </div>
+            <button class="hamburger" id="hamburger-btn" aria-label="Otwórz menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content container">
+                <img src="assets/logo.png" alt="QozaWorks Logo" class="hero-logo">
+                <h1 data-lang-key="heroTitle">Hej, tu Kazanek. Znajdziesz tu wszystko o mnie i moich projektach.</h1>
+                <a href="#projects" class="cta-button" data-lang-key="heroButton">Zobacz moje projekty</a>
+            </div>
+        </section>
+
+        <section id="projects" class="container">
+            <h2 class="section-title" data-lang-key="projectsTitle">Moje Projekty</h2>
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" data-lang-key-placeholder="searchPlaceholder" placeholder="Wyszukaj po nazwie, opisie...">
+            </div>
+            
+            <h3 class="category-title" data-lang-key="minecraftProjectsTitle">Projekty związane z Minecraft</h3>
+            <div class="projects-grid" id="minecraft-projects-container"></div>
+            
+            <!-- <h3 class="category-title" data-lang-key="otherProjectsTitle">Inne Projekty</h3> -->
+            <div class="projects-grid" id="other-projects-container"></div>
+        </section>
+
+        <section id="about" class="container">
+            <h2 class="section-title" data-lang-key="aboutTitle">O mnie</h2>
+            <div class="about-content">
+                <img src="assets/kazanek.png" alt="Zdjęcie profilowe" class="profile-pic">
+                <p data-lang-key="aboutDescription">"Hej, jestem Kazanek..."</p>
+            </div>
+        </section>
+
+        <section id="partnerships" class="container">
+            <h2 class="section-title" data-lang-key="partnershipsTitle">Partnerstwa</h2>
+            <div class="flex-grid" id="partnerships-container"></div>
+        </section>
+
+        <section id="reviews" class="container">
+            <h2 class="section-title" data-lang-key="reviewsTitle">Opinie</h2>
+            <div class="flex-grid" id="reviews-container"></div>
+        </section>
+
+        <section id="contact" class="container">
+            <h2 class="section-title" data-lang-key="contactTitle">Kontakt i Media</h2>
+            <div class="flex-grid" id="contact-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 QozaWorks. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

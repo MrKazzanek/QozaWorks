@@ -1,0 +1,87 @@
+{
+    "navProjects": "Projekty",
+    "navAbout": "O mnie",
+    "navPartnerships": "Partnerstwa",
+    "navReviews": "Opinie",
+    "navContact": "Kontakt",
+    "heroTitle": "Hej, z tej strony Kazanek. Tutaj znajdziesz tu wszystko o mnie i moich projektach.",
+    "heroButton": "Zobacz moje projekty",
+    "projectsTitle": "Moje Projekty",
+    "searchPlaceholder": "Wyszukaj po nazwie, opisie...",
+    "minecraftProjectsTitle": "Projekty związane z Minecraft",
+    "otherProjectsTitle": "Inne Projekty",
+    "projectLinkText": "Odwiedź projekt",
+    "aboutTitle": "O mnie",
+    "aboutDescription": "Hej, z tej strony Kazanek, choć w prawdziwym życiu nazywam się Arek. Mam świeżo ukończone 18 lat i pasjonuję się tworzeniem różnego rodzaju stron, aplikacji, a od pewnego czasu także gier. W wolnych chwilach lubię pograć w moją ulubioną grę – Minecraft – albo poukładać klocki LEGO, choć aktualnie żadnych nie posiadam.\n\nMoim ulubionym zwierzakiem jest, jak pewnie można się domyślić po profilowym, koza. I to nie tylko ta z Minecrafta, ale też prawdziwa. Niektórzy mówią o mnie, że jestem „specem od wszystkiego”, chociaż sam raczej się za takiego nie uważam XD.\n\nNie wiem, co jeszcze mógłbym dodać, więc… miłego przeglądania moich projektów!",
+    "partnershipsTitle": "Partnerstwa",
+    "partnerLinkText": "Odwiedź",
+    "reviewsTitle": "Opinie",
+    "contactTitle": "Kontakt i Media",
+    "contactDetailsTitle": "Dane Kontaktowe",
+    "socialMediaTitle": "Moje Media",
+    "projects": {
+        "minecraft": [
+            {
+                "name": "MineWallpapers",
+                "description": "Najpiękniejsze tapety z uniwersum Minecrafta na Twój komputer, telefon czy tablet! Znajdziesz tu zarówno nasze autorskie grafiki, jak i dzieła stworzone przez społeczność.",
+                "status": "Ciągle aktualizowane",
+                "type": "Strona Internetowa",
+                "image": "assets/minewallpapers.png",
+                "link": "https://minewallpapers.netlify.app/"
+            },
+            {
+                "name": "MineTunes",
+                "description": "MineTunes to portal, na którym możesz słuchać muzyki z gry Minecraft i nie tylko. Znajdziesz tu zarówno klasyczne utwory C418, jak i nowsze kompozycje Aarona Cherofa. To jak Spotify, ale w klimacie Minecrafta!",
+                "status": "Ciągle aktualizowane",
+                "type": "Strona Internetowa",
+                "image": "assets/minetunes.png",
+                "link": "https://minetunes.netlify.app/"
+            },
+            {
+                "name": "MineStyler",
+                "description": "Narzędzie wbudowane na stronie, które ułatwia ubieranie swojego skina w naramienniki, pelerynki i inne akcesoria. Znajdziesz tu kreacje stworzone nie tylko przez Kazanka, ale również przez całą społeczność.",
+                "status": "Aktualizowanie chwilowo wstrzymane",
+                "type": "Strona Internetowa",
+                "image": "assets/minestyler.png",
+                "link": "https://minestyler.netlify.app/"
+            }
+        ],
+        "other": []
+    },
+    "partnerships": [
+        {
+            "name": "Imperium Fabskiego",
+            "image": "assets/if-logo.png",
+            "description": "Partnerski serwer discord youtubera Fabskiego.",
+            "duration": {
+                "from": "06.01.2025",
+                "to": "Trwa ciągle"
+            },
+            "link": "https://discord.gg/YzcBM7MUZy"
+        }
+    ],
+    "reviews": [
+        {
+            "author": "Kaloryfer312",
+            "opinion": "Rel, świetna stronka",
+            "avatar": "assets/kalo.png"
+        }
+    ],
+    "contact": {
+        "emails": [
+            "q.st.kontakt@gmail.com",
+            "mr.kazanek@gmail.com"
+        ],
+        "discord": "kazanek",
+        "social": {
+            "Kanał YouTube": {
+                "url": "https://www.youtube.com/@PanKazanek",
+                "icon": "fab fa-youtube"
+            },
+            "Konto na X": {
+                "url": "https://x.com/MrKazanek",
+                "icon": "fab fa-twitter"
+            }
+        }
+    }
+}

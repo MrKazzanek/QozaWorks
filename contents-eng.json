@@ -1,0 +1,87 @@
+{
+    "navProjects": "Projects",
+    "navAbout": "About Me",
+    "navPartnerships": "Partnerships",
+    "navReviews": "Reviews",
+    "navContact": "Contact",
+    "heroTitle": "Hi, this is Kazanek. Here you’ll find everything about me and my projects.\n",
+    "heroButton": "See my projects",
+    "projectsTitle": "My Projects",
+    "searchPlaceholder": "Search by name, description...",
+    "minecraftProjectsTitle": "Projects related to Minecraft",
+    "otherProjectsTitle": "Other Projects",
+    "projectLinkText": "Visit the project",
+    "aboutTitle": "About Me",
+    "aboutDescription": "Hey, it’s Kazanek here, though in real life my name is Arek. I’ve just turned 18 and I’m passionate about creating all kinds of websites, applications, and recently also games. In my free time I enjoy playing my favorite game – Minecraft – or building LEGO sets, even though I don’t have any at the moment.\n\nMy favorite animal, as you can probably guess from my profile picture, is a goat. And not just the one from Minecraft, but the real-life one too. Some people like to call me a “jack-of-all-trades,” although I wouldn’t really say that about myself XD.\n\nI’m not sure what else to add, so… enjoy browsing my projects!",
+    "partnershipsTitle": "Partnerships",
+    "partnerLinkText": "Visit",
+    "reviewsTitle": "Reviews",
+    "contactTitle": "Contact & Media",
+    "contactDetailsTitle": "Contact Details",
+    "socialMediaTitle": "My Socials",
+    "projects": {
+        "minecraft": [
+            {
+                "name": "MineWallpapers",
+                "description": "The most beautiful wallpapers from the Minecraft universe for your computer, phone, or tablet! Here you'll find both our original artwork and creations made by the community.",
+                "status": "Continuously updated",
+                "type": "Website",
+                "image": "assets/minewallpapers.png",
+                "link": "https://minewallpapers.netlify.app/"
+            },
+            {
+                "name": "MineTunes",
+                "description": "MineTunes is a portal where you can listen to music from Minecraft and beyond. It features both classic tracks by C418 and newer compositions by Aaron Cherof. It's like Spotify, but with a Minecraft twist!",
+                "status": "Continuously updated",
+                "type": "Website",
+                "image": "assets/minetunes.png",
+                "link": "https://minetunes.netlify.app/"
+            },
+            {
+                "name": "MineStyler",
+                "description": "A built-in tool on the website that makes it easy to dress your skin with shoulder pads, capes, and other accessories. You can find creations made not only by Kazank, but also by the wider community.",
+                "status": "Updates temporarily paused",
+                "type": "Website",
+                "image": "assets/minestyler.png",
+                "link": "https://minestyler.netlify.app/"
+            }
+        ],
+        "other": []
+    },
+    "partnerships": [
+        {
+            "name": "Imperium Fabskiego",
+            "image": "assets/if-logo.png",
+            "description": "Partner Discord server of YouTuber Fabsky.",
+            "duration": {
+                "from": "06.01.2025",
+                "to": "It is still ongoing."
+            },
+            "link": "https://discord.gg/YzcBM7MUZy"
+        }
+    ],
+    "reviews": [
+        {
+            "author": "Kaloryfer312",
+            "opinion": "Rel, great site",
+            "avatar": "assets/kalo.png"
+        }
+    ],
+    "contact": {
+        "emails": [
+            "q.st.kontakt@gmail.com",
+            "mr.kazanek@gmail.com"
+        ],
+        "discord": "kazanek",
+        "social": {
+            "YouTube channel": {
+                "url": "https://www.youtube.com/@PanKazanek",
+                "icon": "fab fa-youtube"
+            },
+            "X account": {
+                "url": "https://x.com/MrKazanek",
+                "icon": "fab fa-twitter"
+            }
+        }
+    }
+}
