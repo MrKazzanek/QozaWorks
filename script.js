@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('search-input');
 
     // --- STATE MANAGEMENT ---
-    let currentLang = localStorage.getItem('lang') || 'pl';
+    let currentLang = localStorage.getItem('lang') || 'en';
     let currentTheme = localStorage.getItem('theme') || 'system';
 
     // --- THEME SWITCHER LOGIC ---
@@ -140,4 +140,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- INITIALIZATION ---
     applyTheme(currentTheme);
     loadLanguage(currentLang);
+
 });
