@@ -4,7 +4,7 @@
     "navPartnerships": "Partnerstwa",
     "navReviews": "Opinie",
     "navContact": "Kontakt",
-    "heroTitle": "Hej, z tej strony Kazanek. Tutaj znajdziesz tu wszystko o mnie i moich projektach.",
+    "heroTitle": "Hej, z tej strony Kazanek. Tutaj znajdziesz wszystko o mnie i moich projektach.",
     "heroButton": "Zobacz moje projekty",
     "projectsTitle": "Moje Projekty",
     "searchPlaceholder": "Wyszukaj po nazwie, opisie...",
@@ -84,4 +84,5 @@
             }
         }
     }
+
 }
