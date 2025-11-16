@@ -65,6 +65,11 @@
             "author": "Kaloryfer312",
             "opinion": "Rel, great site",
             "avatar": "assets/kalo.png"
+        },
+        {
+            "author": "FABSKY",
+            "opinion": "A phenomenal website — I wish you continued growth.",
+            "avatar": "assets/fabsky.png"
         }
     ],
     "contact": {
@@ -84,4 +89,5 @@
             }
         }
     }
+
 }
