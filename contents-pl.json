@@ -65,6 +65,11 @@
             "author": "Kaloryfer312",
             "opinion": "Rel, świetna stronka",
             "avatar": "assets/kalo.png"
+        },
+        {
+            "author": "FABSKY",
+            "opinion": "Fenomenalna strona życzę dalszego rozwoju.",
+            "avatar": "assets/fabsky.png"
         }
     ],
     "contact": {
@@ -86,3 +91,4 @@
     }
 
 }
+
