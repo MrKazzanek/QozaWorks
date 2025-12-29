@@ -21,6 +21,14 @@
     "socialMediaTitle": "Moje Media",
     "projects": {
         "minecraft": [
+             {
+                "name": "MineNews",
+                "description": "Serwis omawiający nowości, zapowiedzi, zmiany z świata Minecraft. Strona dostępna tylko w języku Polskim.",
+                "status": "Ciągle aktualizowane",
+                "type": "Strona Internetowa",
+                "image": "https://minenews.netlify.app/minenews-logo-small.png",
+                "link": "https://minenews.netlify.app/"
+            },
             {
                 "name": "MineWallpapers",
                 "description": "Najpiękniejsze tapety z uniwersum Minecrafta na Twój komputer, telefon czy tablet! Znajdziesz tu zarówno nasze autorskie grafiki, jak i dzieła stworzone przez społeczność.",
@@ -91,4 +99,5 @@
     }
 
 }
+
 
