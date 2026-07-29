@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Action Bar — Color Palette</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;500;600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0e0e10;
+    color: #e0e0e0;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  header .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 12px;
+  }
+
+  header h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    background: linear-gradient(90deg, #c085ff, #28c7fc, #7aff83, #fcf062, #ff9830, #ff3b5f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  header p {
+    font-size: 14px;
+    color: #666;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .section {
+    max-width: 900px;
+    margin: 0 auto 48px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #888;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .section-header .line {
+    flex: 1;
+    height: 1px;
+    background: #222;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
+
+  .swatch {
+    border-radius: 10px;
+    overflow: hidden;
+    background: #18181b;
+    border: 1px solid #222;
+    cursor: pointer;
+    transition: transform 0.15s, border-color 0.15s;
+    position: relative;
+  }
+
+  .swatch:hover {
+    transform: translateY(-3px);
+    border-color: #444;
+  }
+
+  .swatch:hover .copy-hint {
+    opacity: 1;
+  }
+
+  .swatch-color {
+    height: 72px;
+    width: 100%;
+  }
+
+  .swatch-info {
+    padding: 8px 10px 9px;
+  }
+
+  .swatch-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #444;
+    margin-bottom: 2px;
+  }
+
+  .swatch-hex {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: #ccc;
+  }
+
+  .copy-hint {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 9px;
+    font-family: 'JetBrains Mono', monospace;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.15s;
+    pointer-events: none;
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #1e1e22;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #e0e0e0;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* domyślny kolor — osobno na górze */
+  .default-swatch-wrap {
+    max-width: 900px;
+    margin: 0 auto 48px;
+  }
+
+  .default-swatch {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #18181b;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+    width: fit-content;
+  }
+
+  .default-swatch:hover { border-color: #444; }
+
+  .default-color-block {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: #eeff70;
+    flex-shrink: 0;
+  }
+
+  .default-label {
+    font-size: 13px;
+    color: #888;
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 4px;
+  }
+
+  .default-hex {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    font-weight: 600;
+    color: #eeff70;
+  }
+
+  .default-cmd {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #555;
+    margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">My Action Bar · Datapack</div>
+  <h1>Color Palette</h1>
+  <p>/trigger set_color set &lt;1–64&gt;</p>
+</header>
+
+<!-- Default -->
+<div class="default-swatch-wrap">
+  <div class="section-header">
+    <h2>Default</h2>
+    <div class="line"></div>
+  </div>
+  <div class="default-swatch" onclick="copy('#eeff70')">
+    <div class="default-color-block"></div>
+    <div>
+      <div class="default-label">set_color set 0 — default</div>
+      <div class="default-hex">#eeff70</div>
+      <div class="default-cmd">click to copy hex</div>
+    </div>
+  </div>
+</div>
+
+<div id="palette"></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const categories = [
+    {
+      name: "White",
+      colors: [
+        { id: 1, hex: "#ffffff" },
+        { id: 2, hex: "#bababa" },
+        { id: 3, hex: "#636363" },
+        { id: 4, hex: "#2b2b2b" },
+        { id: 5, hex: "#171717" },
+        { id: 6, hex: "#000000" },
+      ]
+    },
+    {
+      name: "Red",
+      colors: [
+        { id: 7,  hex: "#ff3b5f" },
+        { id: 8,  hex: "#ff002b" },
+        { id: 9,  hex: "#ff0000" },
+        { id: 10, hex: "#990303" },
+        { id: 11, hex: "#470101" },
+      ]
+    },
+    {
+      name: "Orange",
+      colors: [
+        { id: 12, hex: "#ff9830" },
+        { id: 13, hex: "#ff8000" },
+        { id: 14, hex: "#ff5100" },
+        { id: 15, hex: "#c24004" },
+      ]
+    },
+    {
+      name: "Yellow",
+      colors: [
+        { id: 16, hex: "#fcf062" },
+        { id: 17, hex: "#ffed2b" },
+        { id: 18, hex: "#ffea00" },
+        { id: 19, hex: "#e5ff00" },
+        { id: 20, hex: "#ffc800" },
+        { id: 21, hex: "#a38903" },
+      ]
+    },
+    {
+      name: "Green",
+      colors: [
+        { id: 22, hex: "#7aff83" },
+        { id: 23, hex: "#36ff43" },
+        { id: 24, hex: "#00ff10" },
+        { id: 25, hex: "#2c9e33" },
+        { id: 26, hex: "#135e18" },
+        { id: 27, hex: "#033607" },
+        { id: 28, hex: "#011402" },
+      ]
+    },
+    {
+      name: "Cyan",
+      colors: [
+        { id: 29, hex: "#73ffef" },
+        { id: 30, hex: "#00ffe1" },
+        { id: 31, hex: "#0f9989" },
+        { id: 32, hex: "#05453d" },
+      ]
+    },
+    {
+      name: "Blue",
+      colors: [
+        { id: 33, hex: "#85e0ff" },
+        { id: 34, hex: "#28c7fc" },
+        { id: 35, hex: "#00bfff" },
+        { id: 36, hex: "#03759c" },
+        { id: 37, hex: "#267dff" },
+        { id: 38, hex: "#0066ff" },
+        { id: 39, hex: "#2738f2" },
+        { id: 40, hex: "#0015ff" },
+        { id: 41, hex: "#0311a6" },
+        { id: 42, hex: "#01063d" },
+      ]
+    },
+    {
+      name: "Purple",
+      colors: [
+        { id: 43, hex: "#c085ff" },
+        { id: 44, hex: "#9a3bff" },
+        { id: 45, hex: "#7c00ff" },
+        { id: 46, hex: "#490394" },
+        { id: 47, hex: "#230147" },
+      ]
+    },
+    {
+      name: "Pink",
+      colors: [
+        { id: 48, hex: "#ff6bf0" },
+        { id: 49, hex: "#fa32e6" },
+        { id: 50, hex: "#ff00e6" },
+        { id: 51, hex: "#9c038d" },
+        { id: 52, hex: "#40103b" },
+      ]
+    },
+    {
+      name: "Brown",
+      colors: [
+        { id: 53, hex: "#7d4510" },
+        { id: 54, hex: "#4d2a09" },
+        { id: 55, hex: "#402001" },
+        { id: 56, hex: "#1c0e00" },
+      ]
+    },
+    {
+      name: "Other",
+      colors: [
+        { id: 57, hex: "#7d5a37" },
+        { id: 58, hex: "#cc00ff" },
+        { id: 59, hex: "#f0b3ff" },
+        { id: 60, hex: "#f2ffb3" },
+        { id: 61, hex: "#b8f774" },
+        { id: 62, hex: "#74f7d4" },
+        { id: 63, hex: "#f79974" },
+        { id: 64, hex: "#468a0f" },
+      ]
+    },
+  ];
+
+  const palette = document.getElementById('palette');
+
+  categories.forEach(cat => {
+    const section = document.createElement('div');
+    section.className = 'section';
+
+    const header = document.createElement('div');
+    header.className = 'section-header';
+    header.innerHTML = `<h2>${cat.name}</h2><div class="line"></div>`;
+    section.appendChild(header);
+
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+
+    cat.colors.forEach(c => {
+      const swatch = document.createElement('div');
+      swatch.className = 'swatch';
+      swatch.innerHTML = `
+        <div class="swatch-color" style="background:${c.hex}"></div>
+        <div class="swatch-info">
+          <div class="swatch-id">set ${c.id}</div>
+          <div class="swatch-hex">${c.hex}</div>
+        </div>
+        <div class="copy-hint">copy</div>
+      `;
+      swatch.addEventListener('click', () => copy(c.hex));
+      grid.appendChild(swatch);
+    });
+
+    section.appendChild(grid);
+    palette.appendChild(section);
+  });
+
+  let toastTimer;
+  function copy(hex) {
+    navigator.clipboard.writeText(hex).then(() => {
+      const toast = document.getElementById('toast');
+      toast.textContent = `Copied ${hex}`;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+    });
+  }
+</script>
+</body>
+</html>
