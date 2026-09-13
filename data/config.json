@@ -1,0 +1,10 @@
+{
+  "siteTitle": "QozaWorks",
+  "heroLogo": "assets/site/logo.png",
+  "heroBanner": "assets/site/banner.png",
+  "heroBlur": "10px",
+  "avatar": "assets/site/avatar.png",
+  "defaultLang": "pl",
+  "contactEmail": "mr.kazanek@gmail.com",
+  "goatSound": "assets/goat.mp3"
+}

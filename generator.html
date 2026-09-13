@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rozbudowany Generator Danych JSON | Kazanek</title>
+    <link rel="shortcut icon" href="assets/site/favicon.png?v=2" type="image/png">
+    <link rel="icon" type="image/png" href="assets/site/favicon.png?v=2">
+    <link rel="apple-touch-icon" href="assets/site/favicon.png?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gen-container {
+            max-width: 1000px;
+            margin: 110px auto 60px;
+            padding: 0 24px;
+        }
+        .gen-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 36px;
+        }
+        .gen-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            padding-bottom: 16px;
+        }
+        .gen-tab-btn {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            font-family: "Lexend", sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .gen-tab-btn:hover, .gen-tab-btn.active {
+            background: #ffffff;
+            color: #0d0e11;
+            border-color: #ffffff;
+            font-weight: 600;
+        }
+        .gen-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        pre {
+            background: #0d0e11;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            color: #22c55e;
+            font-family: monospace;
+            font-size: 13px;
+        }
+        select.form-control option {
+            background-color: #16171d !important;
+            color: #ffffff !important;
+        }
+    </style>
+</head>
+<body>
+    <header id="site-header" class="scrolled">
+        <div id="site-header-container">
+            <div id="site-logo">
+                <img src="assets/site/logo.png" alt="Kazanek Logo" onclick="window.location.href='index.html'">
+            </div>
+            <a href="index.html" class="nav-cta"><i class="fa-solid fa-arrow-left"></i> Powrót do Strony</a>
+        </div>
+    </header>
+
+    <div class="gen-container">
+        <div class="gen-card">
+            <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Rozbudowany Generator Danych JSON</h2>
+            <p style="color: rgba(255,255,255,0.7); margin-bottom: 24px;">Wybierz zakładkę i wygeneruj poprawny kod JSON dla projektów, filmów YouTube, partnerów, social media lub kontaktów.</p>
+
+            <div class="gen-tabs">
+                <button class="gen-tab-btn active" onclick="switchGenTab('projects')"><i class="fa-solid fa-layer-group"></i> Projekty (projects.json)</button>
+                <button class="gen-tab-btn" onclick="switchGenTab('youtube')"><i class="fa-brands fa-youtube"></i> Filmy YouTube (youtube.json)</button>
+                <button class="gen-tab-btn" onclick="switchGenTab('partners')"><i class="fa-solid fa-handshake"></i> Partnerzy (partners.json)</button>
+                <button class="gen-tab-btn" onclick="switchGenTab('socials')"><i class="fa-solid fa-share-nodes"></i> Social Media (socials.json)</button>
+                <button class="gen-tab-btn" onclick="switchGenTab('contacts')"><i class="fa-solid fa-address-book"></i> Kontakty (contacts.json)</button>
+            </div>
+
+            <div id="tab-projects" class="gen-tab-content">
+                <form onsubmit="generateProjectsJSON(event)">
+                    <div class="gen-grid">
+                        <div class="form-group">
+                            <label>Tytuł Projektu</label>
+                            <input type="text" id="gp-title" class="form-control" placeholder="np. Nowy Mod Minecraft" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Typ Projektu</label>
+                            <select id="gp-type" class="form-control" onchange="toggleProjectTypeFields()" required>
+                                <option value="www">Strona WWW (www)</option>
+                                <option value="app">Aplikacja (app)</option>
+                                <option value="mc_mod">Mod Minecraft (mc_mod)</option>
+                                <option value="other">Inne (other)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width" id="gp-custom-type-group" style="display: none;">
+                            <label>Własna Nazwa Typu (PL / EN)</label>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <input type="text" id="gp-typename-pl" class="form-control" placeholder="PL np. Narzędzie CLI">
+                                <input type="text" id="gp-typename-en" class="form-control" placeholder="EN np. CLI Tool">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Ścieżka do Baneru (PNG / SVG)</label>
+                            <input type="text" id="gp-banner" class="form-control" value="assets/projects/moj_projekt.png" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Status Projektu</label>
+                            <select id="gp-status" class="form-control" required>
+                                <option value="in_progress">Nadal rozwijany (in_progress)</option>
+                                <option value="completed">Zakończony (completed)</option>
+                                <option value="paused">Wstrzymany (paused)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Opis Po Polsku (PL)</label>
+                            <textarea id="gp-desc-pl" class="form-control" placeholder="Opis projektu po polsku..." required></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Opis Po Angielsku (EN)</label>
+                            <textarea id="gp-desc-en" class="form-control" placeholder="Opis projektu po angielsku..." required></textarea>
+                        </div>
+
+                        <div class="form-group full-width" id="gp-single-link-group">
+                            <label>Główny Link do Projektu</label>
+                            <input type="url" id="gp-link" class="form-control" placeholder="https://moj-projekt.pl">
+                        </div>
+
+                        <div class="form-group full-width" id="gp-mc-links-group" style="display: none;">
+                            <label>Linki dla Moda Minecraft (Max 4 linki)</label>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <input type="url" id="gp-mod-modrinth" class="form-control" placeholder="Modrinth URL">
+                                <input type="url" id="gp-mod-curseforge" class="form-control" placeholder="CurseForge URL">
+                                <input type="url" id="gp-mod-planetmc" class="form-control" placeholder="PlanetMinecraft URL">
+                                <input type="url" id="gp-mod-site" class="form-control" placeholder="Strona Moda URL">
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Tagi (rozdzielone przecinkami)</label>
+                            <input type="text" id="gp-tags" class="form-control" placeholder="HTML, CSS, JavaScript">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;"><i class="fa-solid fa-code"></i> Generuj Kod Projektu JSON</button>
+                </form>
+            </div>
+
+            <div id="tab-youtube" class="gen-tab-content" style="display: none;">
+                <form onsubmit="generateYoutubeJSON(event)">
+                    <div class="gen-grid">
+                        <div class="form-group">
+                            <label>Tytuł Filmu (PL)</label>
+                            <input type="text" id="gy-title-pl" class="form-control" placeholder="Tytuł filmu po polsku..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tytuł Filmu (EN)</label>
+                            <input type="text" id="gy-title-en" class="form-control" placeholder="Tytuł filmu po angielsku..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Link do Filmu na YouTube</label>
+                            <input type="url" id="gy-url" class="form-control" placeholder="https://www.youtube.com/watch?v=..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Ścieżka do Miniaturki (URL / lokalna)</label>
+                            <input type="text" id="gy-thumb" class="form-control" placeholder="assets/projects/portfolio.png" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Data Publikacji</label>
+                            <input type="text" id="gy-date" class="form-control" placeholder="np. 10.09.2024" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Liczba Wyświetleń (np. 1.2k)</label>
+                            <input type="text" id="gy-views" class="form-control" placeholder="np. 1.2k">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Opis Filmu (PL)</label>
+                            <textarea id="gy-desc-pl" class="form-control" placeholder="Opis filmu po polsku..." required></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Opis Filmu (EN)</label>
+                            <textarea id="gy-desc-en" class="form-control" placeholder="Opis filmu po angielsku..." required></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;"><i class="fa-solid fa-code"></i> Generuj Kod Filmu YouTube JSON</button>
+                </form>
+            </div>
+
+            <div id="tab-partners" class="gen-tab-content" style="display: none;">
+                <form onsubmit="generatePartnersJSON(event)">
+                    <div class="gen-grid">
+                        <div class="form-group">
+                            <label>Nazwa Partnera</label>
+                            <input type="text" id="gpa-name" class="form-control" placeholder="np. CraftStudio Network" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Ścieżka do Logo / Awatara</label>
+                            <input type="text" id="gpa-logo" class="form-control" value="assets/site/logo.png" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Data Początkowa (Od)</label>
+                            <input type="text" id="gpa-from" class="form-control" placeholder="np. 11.09.2024" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Data Końcowa (Do - puste jeśli trwa)</label>
+                            <input type="text" id="gpa-to" class="form-control" placeholder="np. 05.03.2025 (pozostaw puste dla 'Obecnie')">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Opis Partnerstwa (PL)</label>
+                            <textarea id="gpa-desc-pl" class="form-control" placeholder="Opis po polsku..." required></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Opis Partnerstwa (EN)</label>
+                            <textarea id="gpa-desc-en" class="form-control" placeholder="Opis po angielsku..." required></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Link do Strony Partnera</label>
+                            <input type="url" id="gpa-url" class="form-control" placeholder="https://partner-website.com">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;"><i class="fa-solid fa-code"></i> Generuj Kod Partnera JSON</button>
+                </form>
+            </div>
+
+            <div id="tab-socials" class="gen-tab-content" style="display: none;">
+                <form onsubmit="generateSocialsJSON(event)">
+                    <div class="gen-grid">
+                        <div class="form-group">
+                            <label>Nazwa Platformy</label>
+                            <input type="text" id="gs-name" class="form-control" placeholder="np. GitHub" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nazwa Użytkownika / Tag</label>
+                            <input type="text" id="gs-user" class="form-control" placeholder="np. @kazanek" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Link do Profilu</label>
+                            <input type="url" id="gs-url" class="form-control" placeholder="https://github.com/kazanek" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Klasa Ikony FontAwesome</label>
+                            <input type="text" id="gs-icon" class="form-control" placeholder="fa-brands fa-github" required>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Kolor Akcentowy (HEX)</label>
+                            <input type="color" id="gs-color" class="form-control" value="#ffffff" style="height: 45px;">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;"><i class="fa-solid fa-code"></i> Generuj Kod Social Media JSON</button>
+                </form>
+            </div>
+
+            <div id="tab-contacts" class="gen-tab-content" style="display: none;">
+                <form onsubmit="generateContactsJSON(event)">
+                    <div class="gen-grid">
+                        <div class="form-group">
+                            <label>Identyfikator (np. email, discord)</label>
+                            <input type="text" id="gc-id" class="form-control" placeholder="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Klasa Ikony FontAwesome</label>
+                            <input type="text" id="gc-icon" class="form-control" placeholder="fa-solid fa-envelope" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Etykieta PL</label>
+                            <input type="text" id="gc-label-pl" class="form-control" placeholder="Adres E-mail" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Etykieta EN</label>
+                            <input type="text" id="gc-label-en" class="form-control" placeholder="Email Address" required>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Wartość do Skopiowania (np. adres email / tag)</label>
+                            <input type="text" id="gc-value" class="form-control" placeholder="kontakt@kazanek.pl" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Komunikat Toast PL</label>
+                            <input type="text" id="gc-toast-pl" class="form-control" placeholder="Skopiowano adres email!">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Komunikat Toast EN</label>
+                            <input type="text" id="gc-toast-en" class="form-control" placeholder="Email address copied!">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;"><i class="fa-solid fa-code"></i> Generuj Kod Kontaktu JSON</button>
+                </form>
+            </div>
+
+            <div id="output-box" style="display: none; margin-top: 36px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12);">
+                <h3><i class="fa-solid fa-check" style="color: #22c55e;"></i> Wygenerowany Obiekt JSON:</h3>
+                <pre id="json-output"></pre>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px;">
+                    <button onclick="copyOutput()" class="btn btn-primary"><i class="fa-solid fa-copy"></i> Skopiuj Kod JSON</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchGenTab(tabId) {
+            document.querySelectorAll('.gen-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.gen-tab-content').forEach(c => c.style.display = 'none');
+
+            event.currentTarget.classList.add('active');
+            document.getElementById('tab-' + tabId).style.display = 'block';
+            document.getElementById('output-box').style.display = 'none';
+        }
+
+        function toggleProjectTypeFields() {
+            const type = document.getElementById('gp-type').value;
+            document.getElementById('gp-custom-type-group').style.display = type === 'other' ? 'block' : 'none';
+            document.getElementById('gp-mc-links-group').style.display = type === 'mc_mod' ? 'block' : 'none';
+            document.getElementById('gp-single-link-group').style.display = type === 'mc_mod' ? 'none' : 'block';
+        }
+
+        function displayResult(obj) {
+            document.getElementById('json-output').innerText = JSON.stringify(obj, null, 2);
+            document.getElementById('output-box').style.display = 'block';
+        }
+
+        function generateProjectsJSON(e) {
+            e.preventDefault();
+            const type = document.getElementById('gp-type').value;
+            const obj = {
+                id: "proj-" + Date.now(),
+                type: type,
+                title: document.getElementById('gp-title').value,
+                banner: document.getElementById('gp-banner').value,
+                description: {
+                    pl: document.getElementById('gp-desc-pl').value,
+                    en: document.getElementById('gp-desc-en').value
+                },
+                status: document.getElementById('gp-status').value,
+                tags: document.getElementById('gp-tags').value.split(',').map(t => t.trim()).filter(Boolean)
+            };
+
+            if (type === 'other') {
+                obj.typeName = {
+                    pl: document.getElementById('gp-typename-pl').value || "Inne",
+                    en: document.getElementById('gp-typename-en').value || "Other"
+                };
+            }
+
+            if (type === 'mc_mod') {
+                const links = [];
+                const modrinth = document.getElementById('gp-mod-modrinth').value;
+                const curseforge = document.getElementById('gp-mod-curseforge').value;
+                const planetmc = document.getElementById('gp-mod-planetmc').value;
+                const site = document.getElementById('gp-mod-site').value;
+
+                if (modrinth) links.push({ name: "Modrinth", url: modrinth, icon: "fa-solid fa-cube" });
+                if (curseforge) links.push({ name: "CurseForge", url: curseforge, icon: "fa-solid fa-fire" });
+                if (planetmc) links.push({ name: "PlanetMinecraft", url: planetmc, icon: "fa-solid fa-globe" });
+                if (site) links.push({ name: "Strona Moda", url: site, icon: "fa-solid fa-link" });
+
+                obj.links = links;
+            } else {
+                obj.link = document.getElementById('gp-link').value || "#";
+            }
+
+            displayResult(obj);
+        }
+
+        function generateYoutubeJSON(e) {
+            e.preventDefault();
+            const obj = {
+                id: "yt-" + Date.now(),
+                title: {
+                    pl: document.getElementById('gy-title-pl').value,
+                    en: document.getElementById('gy-title-en').value
+                },
+                url: document.getElementById('gy-url').value,
+                thumbnail: document.getElementById('gy-thumb').value,
+                description: {
+                    pl: document.getElementById('gy-desc-pl').value,
+                    en: document.getElementById('gy-desc-en').value
+                },
+                date: document.getElementById('gy-date').value,
+                views: document.getElementById('gy-views').value || null
+            };
+            displayResult(obj);
+        }
+
+        function generatePartnersJSON(e) {
+            e.preventDefault();
+            const obj = {
+                id: "partner-" + Date.now(),
+                name: document.getElementById('gpa-name').value,
+                logo: document.getElementById('gpa-logo').value,
+                description: {
+                    pl: document.getElementById('gpa-desc-pl').value,
+                    en: document.getElementById('gpa-desc-en').value
+                },
+                url: document.getElementById('gpa-url').value || "#",
+                dateFrom: document.getElementById('gpa-from').value,
+                dateTo: document.getElementById('gpa-to').value || null
+            };
+            displayResult(obj);
+        }
+
+        function generateSocialsJSON(e) {
+            e.preventDefault();
+            const obj = {
+                id: "social-" + Date.now(),
+                name: document.getElementById('gs-name').value,
+                username: document.getElementById('gs-user').value,
+                url: document.getElementById('gs-url').value,
+                icon: document.getElementById('gs-icon').value,
+                color: document.getElementById('gs-color').value
+            };
+            displayResult(obj);
+        }
+
+        function generateContactsJSON(e) {
+            e.preventDefault();
+            const obj = {
+                id: document.getElementById('gc-id').value,
+                label: {
+                    pl: document.getElementById('gc-label-pl').value,
+                    en: document.getElementById('gc-label-en').value
+                },
+                value: document.getElementById('gc-value').value,
+                icon: document.getElementById('gc-icon').value,
+                action: "copy",
+                toastText: {
+                    pl: document.getElementById('gc-toast-pl').value || ("Skopiowano: " + document.getElementById('gc-value').value),
+                    en: document.getElementById('gc-toast-en').value || ("Copied: " + document.getElementById('gc-value').value)
+                }
+            };
+            displayResult(obj);
+        }
+
+        function copyOutput() {
+            const text = document.getElementById('json-output').innerText;
+            navigator.clipboard.writeText(text);
+            alert("Wygenerowany kod JSON został skopiowany do schowka!");
+        }
+    </script>
+</body>
+</html>

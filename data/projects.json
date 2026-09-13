@@ -1,0 +1,137 @@
+[
+  {
+  "id": "proj-1789323296505",
+  "type": "www",
+  "title": "MineTunes",
+  "banner": "assets/projects/mt-logo.png",
+  "description": {
+    "pl": "MineTunes to strona internetowa z muzyką z gry Minecraft i nie tylko — coś w rodzaju Spotify lub YouTube Music, ale w wersji inspirowanej Minecraftem.",
+    "en": "MineTunes is a website with music from the Minecraft game and more, something similar to Spotify/Youtube Music but in the Minecraft version."
+  },
+  "status": "in_progress",
+  "tags": [
+    "Minecraft",
+    "Music",
+    "PWA"
+  ],
+  "link": "https://minetunes.netlify.app/"
+},
+{
+  "id": "proj-1789323568042",
+  "type": "app",
+  "title": "MinePaint",
+  "banner": "assets/projects/mp-logo.png",
+  "description": {
+    "pl": "MinePaint to zaawansowane narzędzie przeznaczone do tworzenia obrazów 2D, panoram, schematów, planów budynków i nie tylko, z wykorzystaniem bloków w stylu Minecrafta. Niezależnie od tego, czy planujesz stworzyć ogromną budowlę, czy projektujesz pixel art, MinePaint zapewnia Ci płótno potrzebne do realizacji Twoich pomysłów.",
+    "en": "MinePaint is a powerful tool designed for drawing 2D images, panoramas, schematics, floor plans, and more using Minecraft-style blocks. Whether you are planning a massive build or creating pixel art, MinePaint gives you the canvas you need."
+  },
+  "status": "paused",
+  "tags": [
+    "Minecraft",
+    "Godot"
+  ],
+  "link": "https://minepaint.netlify.app/"
+},
+{
+  "id": "proj-1789327181323",
+  "type": "mc_mod",
+  "title": "Material Counter",
+  "banner": "assets/projects/material.png",
+  "description": {
+    "pl": "Policz wszystkie materiały potrzebne do zbudowania dowolnie wybranego obszaru. Szybko, prosto i z myślą o trybie Survival.",
+    "en": "Count all materials needed to build any selected area. Fast, simple, and survival-friendly."
+  },
+  "status": "completed",
+  "tags": [
+    "Minecraft",
+    "Datapack"
+  ],
+  "links": [
+    {
+      "name": "Modrinth",
+      "url": "https://modrinth.com/datapack/material-counter",
+      "icon": "fa-solid fa-cube"
+    },
+    {
+      "name": "CurseForge",
+      "url": "https://www.curseforge.com/minecraft/data-packs/material-counter",
+      "icon": "fa-solid fa-fire"
+    },
+    {
+      "name": "PlanetMinecraft",
+      "url": "https://www.planetminecraft.com/data-pack/material-counter-6990420/",
+      "icon": "fa-solid fa-globe"
+    }
+  ]
+},
+{
+  "id": "proj-1789327434566",
+  "type": "mc_mod",
+  "title": "My Action Bar (Datapack)",
+  "banner": "assets/projects/mab-logo-mod.png",
+  "description": {
+    "pl": "My Action Bar to datapack umożliwiający dostosowanie informacji wyświetlanych na pasku akcji. Wybierz, które elementy mają być widoczne, a które ukryte, aby podczas gry wyświetlać tylko najważniejsze dla Ciebie informacje.",
+    "en": "My Action Bar is a datapack that lets you customize the information displayed in your action bar. Choose which elements are visible and which are hidden, so you only see the information that matters most while playing."
+  },
+  "status": "in_progress",
+  "tags": [
+    "Minecraft",
+    "Datapack"
+  ],
+  "links": [
+    {
+      "name": "Modrinth",
+      "url": "https://modrinth.com/datapack/my-action-bar",
+      "icon": "fa-solid fa-cube"
+    },
+    {
+      "name": "CurseForge",
+      "url": "https://www.curseforge.com/minecraft/data-packs/my-action-bar",
+      "icon": "fa-solid fa-fire"
+    },
+    {
+      "name": "PlanetMinecraft",
+      "url": "https://www.planetminecraft.com/data-pack/my-action-bar-display-the-stats-you-want-on-your-action-bar/",
+      "icon": "fa-solid fa-globe"
+    },
+    {
+      "name": " ",
+      "url": "https://myactionbar.netlify.app/",
+      "icon": "fa-solid fa-link"
+    }
+  ]
+},
+{
+  "id": "proj-1789327888790",
+  "type": "www",
+  "title": "McDropsTier",
+  "banner": "assets/projects/mcdt.png",
+  "description": {
+    "pl": "Oceniaj wszystkie najnowsze dropy Minecrafta lub sprawdzaj, jak dany drop został oceniony przez społeczność. Poznaj opinie graczy na temat nowych funkcji, zmian i zawartości.",
+    "en": "Rate all the latest Minecraft drops or see how a specific drop has been rated by the community. Discover players’ opinions on the new features, changes, and content."
+  },
+  "status": "in_progress",
+  "tags": [
+    "Minecraft",
+    "Drops",
+    "Updates"
+  ],
+  "link": "https://mcdropstier.netlify.app/"
+},
+{
+  "id": "proj-1789328150668",
+  "type": "www",
+  "title": "CraftLab",
+  "banner": "assets/projects/craftlab.png",
+  "description": {
+    "pl": "To gra logiczna i craftingowa, w której łączysz różne składniki, aby odkrywać nowe przedmioty, receptury i coraz bardziej złożone połączenia. Eksperymentuj, odkrywaj i odblokuj je wszystkie.",
+    "en": "A logic and crafting game where you combine different ingredients to discover new items, recipes, and increasingly complex creations. Experiment, explore, and unlock them all."
+  },
+  "status": "in_progress",
+  "tags": [
+    "Game",
+    "PWA"
+  ],
+  "link": "https://craftlabgame.netlify.app/"
+}
+]

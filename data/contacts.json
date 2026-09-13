@@ -1,0 +1,44 @@
+[
+  {
+  "id": "email-project",
+  "label": {
+    "pl": "Adres E-mail Projektu",
+    "en": "Project Email Address"
+  },
+  "value": "qozaworks@gmail.com",
+  "icon": "fa-solid fa-envelope",
+  "action": "copy",
+  "toastText": {
+    "pl": "Skopiowano adres e-mail projektu!",
+    "en": "Project email address copied!"
+  }
+  },
+  {
+    "id": "email",
+    "label": {
+      "pl": "Prywatny Adres E-mail",
+      "en": "Private Email Address"
+    },
+    "value": "mr.kazanek@gmail.com",
+    "icon": "fa-solid fa-envelope",
+    "action": "copy",
+    "toastText": {
+      "pl": "Skopiowano adres email!",
+      "en": "Email address copied!"
+    }
+  },
+  {
+    "id": "discord",
+    "label": {
+      "pl": "Discord Tag",
+      "en": "Discord Tag"
+    },
+    "value": "kazanek",
+    "icon": "fa-brands fa-discord",
+    "action": "copy",
+    "toastText": {
+      "pl": "Skopiowano tag Discord: kazanek!",
+      "en": "Discord tag copied: kazanek!"
+    }
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+  "id": "partner-1789322792689",
+  "name": "Gang Świeżaków",
+  "logo": "assets/site/freszcom.png",
+  "description": {
+    "pl": "Stale współpracuję z youtuberem <a id='ytber' href='https://www.youtube.com/@xFreszOfficial'>xFresz</a>, wspierając go w zarządzaniu serwerem oraz przy innych projektach i działaniach związanych z jego twórczością.",
+    "en": "I regularly collaborate with YouTuber <a id='ytber' href='https://www.youtube.com/@xFreszOfficial'>xFresz</a>, helping him manage his server as well as supporting him with other projects and activities related to his content."
+  },
+  "url": "https://discord.gg/3KpEU6ebYS",
+  "dateFrom": "05.04.2026",
+  "dateTo": null
+}
+]

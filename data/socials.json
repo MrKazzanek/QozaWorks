@@ -1,0 +1,34 @@
+[
+  {
+  "id": "social-1789322065806",
+  "name": "YouTube",
+  "username": "@PanKazanek",
+  "url": "https://www.youtube.com/@PanKazanek",
+  "icon": "fa-brands fa-youtube",
+  "color": "#ff0000"
+},
+{
+  "id": "social-1789322183694",
+  "name": "YouTube 2",
+  "username": "@MrKazanek",
+  "url": "https://www.youtube.com/@MrKazanek",
+  "icon": "fa-brands fa-youtube",
+  "color": "#ff0000"
+},
+{
+  "id": "social-1789322290984",
+  "name": "Twitter / X",
+  "username": "@PanKazanek",
+  "url": "https://x.com/PanKazanek",
+  "icon": "fa-brands fa-x-twitter",
+  "color": "#fff"
+},
+{
+  "id": "social-1789322421411",
+  "name": "Bluesky",
+  "username": "@mrkazanek.bsky.social",
+  "url": "https://bsky.app/profile/mrkazanek.bsky.social",
+  "icon": "fa-brands fa-bluesky",
+  "color": "#2bbaf7"
+}
+]
